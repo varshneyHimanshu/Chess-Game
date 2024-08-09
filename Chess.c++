@@ -2011,6 +2011,7 @@ int main()
                 checkMate = true;
                 continue;
             }
+            cout<<"Instruction:: Move format--e2-e3"<<endl;
             cout << "Player 1 Turn:" << endl
                  << "Please Enter a Move:";
             string move;
@@ -2290,6 +2291,7 @@ int main()
                 checkMate = true;
                 continue;
             }
+            cout<<"Instruction:: Move format--e2-e3"<<endl;
             cout << "Player 2 Turn:" << endl
                  << "Please Enter a Move:";
             string move;
