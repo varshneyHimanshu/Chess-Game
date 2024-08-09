@@ -42,7 +42,6 @@ public:
     bool isCheck(vector<vector<char>> &board, unordered_map<string, Pieces *> &map, string &white, string &black, int &color)
     {
         // Determine the king's position based on the color
-        cout << "Piece ke isCheck pr aaya hu" << endl;
         string kingPosition = (color == 0) ? black : white;
         int kingX = kingPosition[0] - '0';
         int kingY = kingPosition[1] - '0';
@@ -1648,7 +1647,7 @@ public:
     {
         // Determine the king's position based on the color
 
-        cout << "isCheckmate me aaya" << endl;
+
 
         string kingPosition = to_string(currKing->row) + to_string(currKing->col);
         int kingX = currKing->row;
@@ -1658,11 +1657,10 @@ public:
         bool temp = currKing->isCheck(board, map, whiteKing->position, blackKing->position, color);
         if (!temp)
         {
-            cout << "Normally return hogya " << endl;
+            // cout << "Normally return hogya " << endl;
             return false; // Not in checkmate if the king is not in check
         }
 
-        cout << "King has Some check" << endl;
 
         vector<pair<int, int>> validKingMoves = currKing->getAllPossibleMoves(board, map);
 
@@ -1806,7 +1804,7 @@ public:
                 if (map[b] != NULL && btha)
                     map[b]->captured = false;
 
-                cout << endPos.first << " " << endPos.second << endl;
+                // cout << endPos.first << " " << endPos.second << endl;
                 return false; // King has a valid move, so it's not checkmate
             }
 
@@ -2023,8 +2021,8 @@ int main()
                 pair<int, int> startPos = {coordinates[0], coordinates[1]};
                 pair<int, int> endPos = {coordinates[2], coordinates[3]};
 
-                cout << g.blackKing->row << " " << g.blackKing->col << endl;
-                cout << g.whiteKing->row << " " << g.whiteKing->col << endl;
+                // cout << g.blackKing->row << " " << g.blackKing->col << endl;
+                // cout << g.whiteKing->row << " " << g.whiteKing->col << endl;
 
 
                 Pieces *currPeice = g.getCurrPeice(startPos);
