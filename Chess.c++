@@ -1563,7 +1563,7 @@ public:
         int endRow = s[4] - '0';
         endRow = 8 - endRow;
 
-        if (startRow > 7 || startRow < 0 || startCol > 7 || endCol < 0)
+        if (startRow > 7 || startRow < 0 || startCol > 7 || startCol < 0 || endRow > 7 || endRow < 0 || endCol > 7 || endCol < 0)
             return false;
 
         return true;
