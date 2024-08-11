@@ -1825,7 +1825,6 @@ public:
             Pieces *piece = entry.second;
             if (piece == nullptr || piece->color != color || piece->captured || piece->id == 17 || piece->id == 18)
                 continue; // Skip empty squares or opponent's pieces
-
             vector<pair<int, int>> possibleMoves = piece->getAllPossibleMoves(board, map);
             if (possibleMoves.size() != 0)
                 return false;
@@ -2039,6 +2038,14 @@ int main()
                 if (currPeice->color != 1)
                 {
                     cout << "INVALID MOVE!! \nIt'sPlayer 1 turn" << endl;
+                    cout << "Press Enter to continue..." << std::endl;
+                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+                    cin.get();
+                    continue;
+                }
+
+                if(endPos.second == g.whiteKing->col && endPos.first == g.whiteKing->row){
+                    cout << "INVALID MOVE!! \nYou Can't Kill your Own King" << endl;
                     cout << "Press Enter to continue..." << std::endl;
                     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
                     cin.get();
@@ -2314,6 +2321,14 @@ int main()
                 if (currPeice->color != 0)
                 {
                     cout << "INVALID MOVE!! It's Player 2 Turn" << endl;
+                    cout << "Press Enter to continue..." << std::endl;
+                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+                    cin.get();
+                    continue;
+                }
+
+                if(endPos.second == g.blackKing->col && endPos.first == g.blackKing->row){
+                    cout << "INVALID MOVE!! \nYou Can't Kill your Own King" << endl;
                     cout << "Press Enter to continue..." << std::endl;
                     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
                     cin.get();
