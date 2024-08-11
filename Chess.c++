@@ -42,6 +42,8 @@ public:
     bool isCheck(vector<vector<char>> &board, unordered_map<string, Pieces *> &map, string &white, string &black, int &color)
     {
         // Determine the king's position based on the color
+
+        // cout<<"isCheck me kya color aaya hai->"<<color<<endl;
         string kingPosition = (color == 0) ? black : white;
         int kingX = kingPosition[0] - '0';
         int kingY = kingPosition[1] - '0';
@@ -62,7 +64,7 @@ public:
                 pair<int, int> startPos = {piece->row, piece->col};
                 pair<int, int> endPos = {kingX, kingY};
 
-                if (piece->isValidMove(board, map, white, black, startPos, endPos))
+                if (piece->isValidMoveForGame(board, map, white, black, startPos, endPos))
                 {
                     return true; // King is in check
                 }
@@ -1147,11 +1149,14 @@ public:
         string b = to_string(endPos.first) + to_string(endPos.second);
 
         bool btha = true;
+        if(map[b] == NULL) btha = false;
         if (map[b] != NULL && map[b]->captured == true)
             btha = false;
 
         this->Move(tempBoard, tempMap, startPos, endPos);
         this->position = b;
+
+        // cout<<"Current Color"<<this->color<<endl;
 
         if (this->isCheck(tempBoard, tempMap, whiteKing, blackKing, this->color))
         {
@@ -1585,6 +1590,7 @@ public:
     void showBoard()
     {
         system("cls");
+        // cout<<this->blackKing->position<<" "<<this->whiteKing->position<<endl;
         cout << "    a     b     c     d     e     f     g     h  " << endl; // Column labels
         cout << "  -------------------------------------------------" << endl;
         for (int i = 0; i < 8; ++i)
